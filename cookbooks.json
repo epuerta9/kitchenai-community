@@ -1,0 +1,10 @@
+{
+    "cookbooks": [
+      {
+        "name": "llama-index-chat",
+        "description": "A starter application for chat",
+        "path": "src/kitchenai_community/llama_index_chat"
+      }
+    ]
+  }
+  

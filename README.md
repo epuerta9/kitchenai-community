@@ -14,8 +14,16 @@
 
 ```console
 pip install kitchenai-community
+
+
+## Creating the required requirements.txt 
+
+`pip freeze | grep -v 'kitchenai' > requirements.txt`
+
 ```
 
 ## License
 
 `kitchenai-community` is distributed under the terms of the [MIT](https://spdx.org/licenses/MIT.html) license.
+
+
