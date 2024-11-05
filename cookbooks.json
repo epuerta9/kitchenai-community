@@ -4,6 +4,11 @@
         "name": "llama-index-chat",
         "description": "A starter application for chat",
         "path": "src/kitchenai_community/llama_index_chat"
+      },
+      {
+        "name": "llama-index-toolhouse",
+        "description": "A cookbook for toolhouse integration with llama-index",
+        "path": "src/kitchenai_community/llama_index_toolhouse"
       }
     ]
   }
