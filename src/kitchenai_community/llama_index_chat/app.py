@@ -1,16 +1,14 @@
-from ninja import Router, Schema,File
+from ninja import Schema
 from kitchenai.contrib.kitchenai_sdk.kitchenai import KitchenAIApp
-from ninja.files import UploadedFile
 
-from llama_index.core import VectorStoreIndex, SimpleDirectoryReader, StorageContext
+from llama_index.core import VectorStoreIndex, StorageContext
 from llama_index.vector_stores.chroma import ChromaVectorStore
 
 from llama_index.llms.openai import OpenAI
 import os 
-import tempfile
 import chromadb
-from typing import Optional
 from llama_index.llms.openai import OpenAI
+from kitchenai.contrib.kitchenai_sdk.storage.llama_parser import Parser
 
 
 # create client and a new collection
@@ -25,30 +23,26 @@ class Query(Schema):
 kitchen = KitchenAIApp()
 
 
-@kitchen.storage("storage")
-def chromadb_storage(request, file: UploadedFile = File(...)):
+@kitchen.storage("file")
+def chromadb_storage(dir: str, *args, **kwargs):
     """
-    Store uploaded files into a vector store
+    Store uploaded files into a vector store with metadata
     """
-    with tempfile.TemporaryDirectory() as temp_dir:
-        # Define the path for the temporary file
-        temp_file_path = os.path.join(temp_dir, file.name)
-        
-        # Save the uploaded file as a temporary file
-        with open(temp_file_path, "wb") as temp_file: 
-            for chunk in file.chunks():
-                temp_file.write(chunk)
+    chroma_collection = chroma_client.get_or_create_collection("quickstart")
+    parser = Parser(api_key=os.environ.get("LLAMA_CLOUD_API_KEY", None))
+    metadata = kwargs.get("metadata", {})
+    metadata = metadata | {"source": "kitchenai_cookbook"}
+    response = parser.load(dir, metadata=metadata, **kwargs)
 
-        # Load data using SimpleDirectoryReader pointing to the temporary directory
-        documents = SimpleDirectoryReader(input_dir=temp_dir).load_data()
+    vector_store = ChromaVectorStore(chroma_collection=chroma_collection)
 
     # set up ChromaVectorStore and load in data
-    vector_store = ChromaVectorStore(chroma_collection=chroma_collection)
     storage_context = StorageContext.from_defaults(vector_store=vector_store)
     VectorStoreIndex.from_documents(
-        documents, storage_context=storage_context
+        response["documents"], storage_context=storage_context
     )
-    return {"msg": "ok"}
+    
+    return {"msg": "ok", "documents": len(response["documents"])}
 
 
 @kitchen.query("query")
