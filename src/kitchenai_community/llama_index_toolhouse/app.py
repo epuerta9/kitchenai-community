@@ -123,4 +123,4 @@ async def sales_rep_workflow(request, input: SalesRepWorkflowInput):
 
     async for event in handler.stream_events():
         if isinstance(event, LogEvent):
-            yield event.msg
+            print(event.msg)

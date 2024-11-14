@@ -10,6 +10,10 @@
 - [Installation](#installation)
 - [License](#license)
 
+- [Llama Index Starter](./src/kitchenai_community/llama_index_starter/README.md)
+
+- [Llama Index + Toolhouse.AI + Cloudflare AI](./src/kitchenai_community/llama_index_toolhouse_cloudflare/README.md)
+
 ## Installation
 
 ```console
