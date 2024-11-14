@@ -101,7 +101,6 @@ jmespath==1.0.1
 joblib==1.4.2
 jupyter_client==8.6.3
 jupyter_core==5.7.2
--e git+ssh://git@github.com/epuerta9/kitchenai.git@77704e99ddc5993953f2a77b1d22e41c23263a9c#egg=kitchenai
 kubernetes==31.0.0
 llama-cloud==0.1.5
 llama-index==0.11.23
