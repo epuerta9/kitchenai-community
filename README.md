@@ -1,7 +1,3 @@
-Here's an enhanced README for `kitchenai-community` with a more engaging style and clearer descriptions.
-
----
-
 # KitchenAI Community Projects
 
 [![PyPI - Version](https://img.shields.io/pypi/v/kitchenai-community.svg)](https://pypi.org/project/kitchenai-community)

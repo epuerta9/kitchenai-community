@@ -60,18 +60,35 @@ This repository contains a KitchenAI-based application that enables storage, que
 
 example data used for this demo: [](https://github.com/epuerta9/kitchenai-community/tree/main/src/kitchenai_community/llama_index_toolhouse_cloudflare/data)
 
-
+use `/api/docs` to upload the 3 example data files.
 
 The `chromadb_storage` function processes and stores documents, building indices to facilitate quick and relevant querying.
 
 **Route**: `/storage/file`  
 **Description**: Stores uploaded files into ChromaDB with metadata, generating indices for quick retrieval and document summary.  
 
+> **NOTE**: The `ingest_label` field is used to match to the correct storage function. In this example, it's set to `file`.
+
 Example:
-```python
-@kitchen.storage("file")
-def chromadb_storage(dir: str, metadata: dict = {}, *args, **kwargs):
-    # Stores files in vector store with metadata
+```
+{
+  "name": "consultancy",
+  "ingest_label": "file"
+}
+```
+
+```
+{
+  "name": "construction",
+  "ingest_label": "file"
+}
+```
+
+```
+{
+  "name": "advertising",
+  "ingest_label": "file"
+}
 ```
 
 #### Key Components
@@ -89,10 +106,10 @@ The `agent` function sets up a querying agent that allows users to request speci
 **Description**: Provides natural language querying capabilities on stored documents with a custom agent, specialized for RFP document analysis.  
 
 Example:
-```python
-@kitchen.query("agent")
-def agent(request, query: Query):
-    # Agent-based querying on vectorized documents
+```
+{
+  "query": "construction"
+}
 ```
 
 #### Key Components
@@ -120,12 +137,13 @@ def agent(request, query: Query):
 
 1. **Upload RFP Files**:
    - Use the `/storage/file` endpoint to upload RFPs, which will be processed and indexed.
+   - Upload the example data from the [data folder](https://github.com/epuerta9/kitchenai-community/tree/main/src/kitchenai_community/llama_index_toolhouse_cloudflare/data)
 
 2. **Query RFP Information**:
-   - Use `/query/agent` to make specific queries on the stored RFPs. For example:
+   - Use `/query/agent` to make a specific query to the agent. Pass in the name of the file you want to query. For example:
    ```json
    {
-       "query": "Summarize the construction RFP requirements"
+       "query": "construction"
    }
    ```
 
