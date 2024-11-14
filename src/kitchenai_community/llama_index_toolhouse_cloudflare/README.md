@@ -55,7 +55,8 @@ This repository contains a KitchenAI-based application that enables storage, que
 
 > **IMPORTANT**: Access the Swagger UI documentation at `/api/docs` to upload, manage files, and query the RFPs. This is the primary interface for file operations.
 
-> **IMPORTANT**: Access the Swagger UI documentation at `/kitchenai-admin` with the `admin@localhost` and `admin` user credentials to manage files.
+> **IMPORTANT**: Access the Django Admin at `/kitchenai-admin` with the `admin@localhost` and `admin` user credentials to manage files and workers.
+
 
 example data used for this demo: [](https://github.com/epuerta9/kitchenai-community/tree/main/src/kitchenai_community/llama_index_toolhouse_cloudflare/data)
 
