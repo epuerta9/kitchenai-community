@@ -6,9 +6,9 @@
         "path": "src/kitchenai_community/llama_index_chat"
       },
       {
-        "name": "llama-index-toolhouse",
-        "description": "A cookbook for toolhouse integration with llama-index",
-        "path": "src/kitchenai_community/llama_index_toolhouse"
+        "name": "llama-index-toolhouse-cloudflare",
+        "description": "An agent cookbook with toolhouse integration, llama-index, and Cloudflare AI",
+        "path": "src/kitchenai_community/llama_index_toolhouse_cloudflare"
       }
     ]
   }
