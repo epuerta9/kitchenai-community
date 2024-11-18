@@ -1,9 +1,9 @@
 {
     "cookbooks": [
       {
-        "name": "llama-index-chat",
-        "description": "A starter application for chat",
-        "path": "src/kitchenai_community/llama_index_chat"
+        "name": "llama-index-starter",
+        "description": "A starter application for RAG. File embeds and querying",
+        "path": "src/kitchenai_community/llama_index_starter"
       },
       {
         "name": "llama-index-toolhouse-cloudflare",
