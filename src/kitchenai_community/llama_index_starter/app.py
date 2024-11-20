@@ -65,13 +65,13 @@ def embed(instance, metadata: dict = {}):
 
 
 @kitchen.query("simple-query")
-def query(request, data: QuerySchema):
+async def query(request, data: QuerySchema):
     vector_store = ChromaVectorStore(chroma_collection=chroma_collection)
 
     index = VectorStoreIndex.from_vector_store(
         vector_store,
     )
     query_engine = index.as_query_engine(chat_mode="best", llm=llm, verbose=True)
-    response = query_engine.aquery(data.query)
+    response = await query_engine.aquery(data.query)
 
     return {"msg": response.response}
