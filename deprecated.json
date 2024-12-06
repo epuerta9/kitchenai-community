@@ -4,6 +4,11 @@
         "name": "llama-index-starter",
         "description": "A starter kitchenai notebook application for RAG. File uploads with query",
         "path": "src/kitchenai_community/llama_index_starter"
+      },
+      {
+        "name": "llama-index-toolhouse-cloudflare",
+        "description": "An agent cookbook with toolhouse integration, llama-index, and Cloudflare AI",
+        "path": "src/kitchenai_community/llama_index_toolhouse_cloudflare"
       }
     ]
   }
